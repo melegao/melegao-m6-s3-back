@@ -6,9 +6,9 @@ const userCreateController = async (req: Request, res: Response) => {
 
     try{
 
-        const {name, email, phone} = req.body
+        const {name, email, phone, password} = req.body
 
-        const newUser = await userCreateService({name, email, phone})
+        const newUser = await userCreateService({name, email, phone, password})
 
         return res.status(201).send(newUser)
 

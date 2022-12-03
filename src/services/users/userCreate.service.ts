@@ -1,9 +1,10 @@
 import { User } from "../../entities/user.entity";
 import { IUserCreate } from "../../interfaces/users";
 import { AppDataSource } from "../../data-source";
+import bcrypt from "bcrypt"
 
 
-const userCreateService = async ({name, email, phone}: IUserCreate) => {
+const userCreateService = async ({name, email, phone, password}: IUserCreate) => {
 
     const userRepository = AppDataSource.getRepository(User)
     const users = await userRepository.find()
@@ -18,6 +19,7 @@ const userCreateService = async ({name, email, phone}: IUserCreate) => {
     user.name = name
     user.email = email
     user.phone = phone
+    user.password = bcrypt.hashSync(password, 10)
 
     userRepository.create(user)
     await userRepository.save(user)
