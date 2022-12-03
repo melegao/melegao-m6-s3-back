@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 import userListService from "../../services/users/userList.service";
 
 
-const userListController = (req: Request, res: Response) => {
+const userListController = async (req: Request, res: Response) => {
 
     try{
 
-        const users = userListService()
+        const users = await userListService()
 
         console.log('pegou')
 
