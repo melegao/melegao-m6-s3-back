@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryColumn} from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, OneToMany} from "typeorm";
 import {v4 as uuid} from "uuid"
+import { Contact } from "./contact.entity";
 
-@Entity()
+@Entity("user")
 
 export class User {
     @PrimaryColumn("uuid")
@@ -18,6 +19,15 @@ export class User {
 
     @Column()
     password: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @CreateDateColumn()
+    updated_at: Date;
+
+    @OneToMany(() => Contact, (contact) => contact.user, {eager: true} )
+    contact: Contact[];
 
     constructor(){
         if (!this.id){

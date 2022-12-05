@@ -10,11 +10,11 @@ export const AppDataSource = new DataSource({
 
     username: "meleg",
     password: "2131",
-    database: process.env.POSTGRES_DB,
+    database: "m6_sprint_3",
 
     synchronize: false,
     logging: true,
-    entities: [User],
+    entities: ["src/entities/*.ts"],
     migrations: ["src/migrations/*.ts"]
 });
 
