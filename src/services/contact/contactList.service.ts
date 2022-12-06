@@ -6,12 +6,6 @@ import { User } from "../../entities/user.entity"
 
 const contactListService = async (id: string) => {
 
-    console.log(id)
-
-    // const contactRepository = AppDataSource.getRepository(Contact)
-
-    // const contact = await contactRepository.findOneBy({id})
-
     const userRepository = AppDataSource.getRepository(User)
 
     const users = await userRepository.find()
