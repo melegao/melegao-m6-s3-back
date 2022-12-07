@@ -9,7 +9,7 @@ export const authUser = (req: Request, res: Response, next: NextFunction) => {
         
         const token = req.headers.authorization
 
-        jwt.verify(token as string, "1234" as string, (err: any, decoded: any) => {
+        jwt.verify(token as string, (process.env.JWT_SECRET) as string, (err: any, decoded: any) => {
             req.userEmail = decoded.email
             req.userId = decoded.id
             next()
